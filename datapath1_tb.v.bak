@@ -1,0 +1,66 @@
+module datapath1_tb();
+
+reg [4:0]SA; // Select A - A Address
+reg [4:0]SB; // Select B - B Address
+reg [4:0]DA; // Data destination address
+reg W; // write enable
+//reg [3:0] status;
+reg reset; // positive logic asynchronous reset
+reg clock;
+reg [4:0]FS;
+reg C0;
+reg [63:0]K;
+reg EN_B;
+reg EN_ALU;
+reg B_sel;
+wire [63:0]F;
+
+//reg mem_read;
+//reg EN_PC;
+reg [63:0] A,B;
+wire [15:0] r0, r1, r2, r3, r4, r5, r6, r7;
+wire [3:0]status;
+
+
+datapath1 dut(SA,SB, DA, W, clock, reset, EN_B, B_sel, EN_ALU, K, FS, C0, F, status, r0, r1, r2, r3, r4, r5, r6, r7);
+initial begin
+W <= 1'b1;
+clock <= 1'b1;
+B_sel <= 1'b1;
+reset <= 1'b0;
+SA <= 5'd31;
+SB <= 5'd4;
+DA <= 5'd2;
+FS <= 5'b01000;
+EN_ALU <= 1'b1;
+C0 <= 1'b0;
+EN_B <= 1'b0;
+A <= 64'd0;
+B <= 64'd0;
+
+#10
+DA <= 5'd0;
+#10
+K <= 64'd15;
+#10
+DA <= 5'd1;
+#10
+DA <= 5'd2;
+#10
+DA <= 5'd3;
+#10
+DA <= 5'd4;
+#10
+DA <= 5'd5;
+#10
+DA <= 5'd6;
+#10
+DA <= 5'd7;
+#200 $stop;
+
+end
+
+always
+#5 clock <= ~clock;
+
+endmodule

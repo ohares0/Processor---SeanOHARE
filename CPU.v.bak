@@ -1,0 +1,18 @@
+module CPU(r0,r1,r2,r3,r4,r5,r6,r7,IR)
+input [31:0] IR
+output [31:0] r0,r1,r2,r3,r4,r5,r6,r7;
+
+
+
+
+
+
+datapath1(SA, SB, DA, W, clock, reset, EN_B, B_sel, EN_ALU, EN_Addr, ENADDRESS_PC, WR_EN, OUT_EN, K, FS, C0, PS,PCSel,
+		EN_PC,IL,FlagSet,FlagReg,IR,r0,r1,r2,r3,r4,r5,r6,r7);
+
+
+
+
+
+
+endmodule

@@ -1,0 +1,10 @@
+module ControlUnit(in, out)
+input [31:0] in;
+output [63:0] out;
+
+
+
+
+
+
+endmodule

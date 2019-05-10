@@ -1,0 +1,35 @@
+module ALU_REG_Tb();
+	reg [7:0] address;
+	reg clk;
+	wire [15:0]out;
+	
+
+	rom_case dut (.address(address), .out(out));
+	 
+	 initial begin //YE OLD CLOCK
+		#1  clk = 0; 
+		forever begin 
+			#5  clk =  ! clk; 
+		end
+	end
+	 
+
+	initial begin
+	address = 8'b0; // Gimmie that initial value of 00 
+	end
+	
+	
+	always begin
+
+		#10 address = 8'b00000000; 
+		#10 address = 8'b00000001; //TWO
+		#10 address = 8'b00000010; //MEMORY THREE!!!
+		#10 address = 8'b00000011; // MEmory FOUR!
+		#10 address = 8'b00000100; //MEM FIVE
+		#10 address = 8'b00000101; //SIX?!
+		
+		end //goodbye
+		
+		
+endmodule //quite like the discovery, it is getting dark and i must sleep
+

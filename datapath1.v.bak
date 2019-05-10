@@ -1,0 +1,24 @@
+module datapath1(SA, SB, DA, W, clock, reset, EN_B, B_sel, EN_ALU, K, FS, C0, F, status, 
+					r0, r1, r2, r3, r4, r5, r6, r7);
+// Inputs
+input [4:0] SA, SB, DA; 
+input W, EN_B, B_sel, EN_ALU, C0, clock, reset; 
+input [63:0] K;
+input [4:0] FS;
+output [15:0] r0, r1, r2, r3, r4, r5, r6, r7;
+output [63:0] F;
+output [3:0] status;
+wire [63:0] A, B, B_signal, D;
+wire [3:0]status;
+
+RegisterFile32x64 regfile(A, B, SA, SB, D, DA, W, reset, clock, r0, r1, r2, r3, r4, r5, r6, r7);
+
+assign B_signal = B_sel ? K : B;
+
+assign D = EN_B ? B : 64'bz;
+
+ALU_LEGv8 alu(A, B_signal, FS, C0, F, status);
+
+assign D = EN_ALU ? F : 64'bz;
+
+endmodule

@@ -1,0 +1,11 @@
+module Datapath( CLK, AA, BB, DA, RST, WR, ENB, EN_B, K, FS, C_in, B_SEL);
+
+input[63:0] K;
+input[4:0] FS;
+input[4:0] AA,BA,DA;
+
+output[3:0] output;
+
+
+
+endmodule
